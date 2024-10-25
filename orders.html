@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/orders.css"><!-- Add your CSS file here -->
+
+    <script src="at.js"></script>
+</head>
+<body>
+
+<header class="header">
+    <section class="flex">
+        <a href="home.html" class="logo">OkPharma</a>
+        <nav class="navbar">
+            <a href="home.html">home</a>
+            <a href="about.html">about</a>
+            <a href="products.html">products</a>
+            <a href="orders.html">orders</a>
+            <a href="contact.html">contact</a>
+        </nav>
+        <div class="icons">
+            <a href="search.html"><i class="fas fa-search"></i></a>
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i><span id="cart-count">(0)</span></a>
+        </div>
+    </section>
+</header>
+
+<div class="heading">
+    <h3>Your Orders</h3>
+</div>
+
+<section class="orders-section">
+    <div id="orders-container"></div>
+</section>
+
+<footer class="footer">
+    <h1 class="title">Connect Us</h1>
+    <section class="box-container">
+        <div class="box">
+            <img src="images/wired-outline-177-envelope-mail-send.gif" alt="">
+            <h3>our email</h3>
+            <a href="mailto:ianisul768@gmail.com">anisul768@gmail.com</a>
+            <a href="mailto:aanisul768@gmail.com">anisul768@gmail.com</a>
+        </div>
+        <div class="box">
+            <img src="images/wired-outline-45-clock-time.gif" alt="">
+            <h3>opening hours</h3>
+            <p>09:00am to 09:00pm </p>
+        </div>
+    </section>
+    <div class="credit">&copy; copyright @ 2023 by <span>SRI Pharmacy</span> | all rights reserved!</div>
+</footer>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+<script>
+    // Function to load orders from local storage
+    function loadOrders() {
+        const ordersContainer = document.getElementById('orders-container');
+        const orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+        if (orders.length === 0) {
+            ordersContainer.innerHTML = '<p>No orders placed yet.</p>';
+            return;
+        }
+
+        orders.forEach((order, index) => {
+            const orderBanner = document.createElement('div');
+            orderBanner.className = 'order-banner';
+            orderBanner.innerHTML = `
+                <h2>Order #${index + 1}</h2>
+                <p><strong>Shipping Information:</strong></p>
+                <p>Name: ${order.name}</p>
+                <p>Address: ${order.address}, ${order.city}, ${order.state}, ${order.zip}</p>
+                <h3>Order Items:</h3>
+                <ul>${order.items.map(item => `<li><img src=${item.image} alt=${item.name}> ${item.name} (x${item.quantity}) - ₹${item.price}</li>`).join('')}</ul>
+                <p><strong>Total: ₹${order.items.reduce((total, item) => total + item.price * item.quantity, 0)}</strong></p>
+            `;
+            ordersContainer.appendChild(orderBanner);
+        });
+    }
+
+    // Load orders on page load
+    loadOrders();
+</script>
+
+</body>
+</html>

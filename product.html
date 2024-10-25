@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Product</title>
+
+   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/quick.css">
+  <script>
+   // Fetch products from 'med_products.json' and track only the viewed product
+   async function fetchAndSendProductView() {
+            try {
+                // Fetch the products JSON file
+                const response = await fetch('med_products.json');
+                const products = await response.json(); // Parse the response as JSON
+
+                // Get the product ID from the URL (assuming the format is 'product.html?id=123')
+                const productId = getQueryParam('id'); // Function to get URL parameter 'id'
+                
+                // Find the product from the fetched products by matching the product ID
+                const viewedProduct = products.find(product => product.id === productId);
+
+                if (viewedProduct) {
+                    // Send the product view event to Adobe Target
+                    adobe.target.trackEvent({
+                        "mbox": "product-view-mbox",  // Define the mbox for tracking product views
+                        "params": {
+                            "entity.id": viewedProduct.id,  // Send the product ID
+                            "entity.name": viewedProduct.name,  // Send the product name
+                            "entity.categoryId": viewedProduct.categoryId,  // Send the category ID (if available)
+                            "entity.pageUrl": window.location.href,  // Send the current page URL
+                            "entity.eventType": "view"  // Define the event type as 'view'
+                        }
+                    });
+
+                    console.log(`Product ${viewedProduct.name} (ID: ${viewedProduct.id}) tracked with Adobe Target`);
+                } else {
+                    console.log(`Product with ID ${productId} not found in product list.`);
+                }
+
+            } catch (error) {
+                console.error('Error fetching products or sending to Adobe Target:', error);
+            }
+        }
+
+        // Function to get the 'id' query parameter from the URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Call the function to fetch and send product view on page load
+        window.onload = fetchAndSendProductView;
+  </script>
+   <script src="at.js"></script>
+</head>
+<body>
+
+<header class="header">
+   <section class="flex">
+      <a href="home.html" class="logo">Nomad Pharma</a>
+      <nav class="navbar">
+         <a href="home.html">Home</a>
+         <a href="about.html">About</a>
+         <a href="products.html">Products</a>
+         <a href="orders.html">Orders</a>
+         <a href="contact.html">Contact</a>
+      </nav>
+      <div class="icons">
+         <a href="search.html"><i class="fas fa-search"></i></a>
+         <a href="cart.html"><i class="fas fa-shopping-cart"></i><span id="cart-count">(0)</span></a>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="menu-btn" class="fas fa-bars"></div>
+      </div>
+   </section>
+</header>
+
+<section class="product-details" id="product-details">
+   <!-- Product details will be inserted here by JavaScript -->
+
+   
+</section>
+
+<footer class="footer">
+   <h1 class="title">Connect Us</h1>
+   <section class="box-container">
+      <div class="box">
+         <img src="images/wired-outline-177-envelope-mail-send.gif" alt="">
+         <h3>Our Email</h3>
+         <a href="mailto:nomad777@gmail.com">nomad777@gmail.com</a>
+      </div>
+      <div class="box">
+         <img src="images/wired-outline-45-clock-time.gif" alt="">
+         <h3>Opening Hours</h3>
+         <p>09:00am to 09:00pm</p>
+      </div>
+      <div class="box">
+         <img src="images/wired-outline-18-location-pin.gif" alt="">
+         <h3>Our Address</h3>
+         <a href="https://www.google.com/maps">Hyderabad, Telangana - 500018</a>
+      </div>
+      <div class="box">
+         <img src="images/Wc8C.gif" alt="">
+         <h3>Our Number</h3>
+         <a href="tel:9999999999">+91-9999999999</a>
+      </div>
+   </section>
+   <div class="credit">&copy; copyright @ 2023 by <span>SRI Pharmacy</span> | all rights reserved!</div>
+</footer>
+
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script src="js/script.js"></script>
+
+<script>
+   // Function to get product ID from the URL
+   function getProductIdFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const productId = params.get('id');
+      return productId; // Get the 'id' parameter from the URL
+   }
+   
+   // Function to fetch product details based on ID
+   async function fetchProductDetails(productid) {
+      try {
+         const response = await fetch('med_products.json');
+         const products = await response.json();
+         const product = products.find((product) => product.id == productid);
+         return product; // Find the product by ID
+      } catch (error) {
+         console.error('Error fetching product details:', error);
+         return null;
+      }
+   }
+   
+   // Function to increment the views for a product and store all views in an array in localStorage
+   function incrementProductViews(productid) {
+      // Retrieve the existing product views array from localStorage or initialize a new one
+      let productViews = JSON.parse(localStorage.getItem('productViews')) || [];
+   
+      // Find if the product already exists in the array
+      let existingProduct = productViews.find((item) => item.id === productid);
+   
+      if (existingProduct) {
+         existingProduct.views++; // Increment the view count if the product already exists
+      } else {
+         // If the product does not exist, add a new object with id and initial views of 1
+         productViews.push({ id: productid, views: 1 });
+      }
+   
+      // Save the updated product views array back to localStorage
+      localStorage.setItem('productViews', JSON.stringify(productViews));
+   
+      // Update view count on the page
+      const currentProduct = productViews.find((item) => item.id === productid);
+      document.getElementById("viewCount").textContent = `Views: ${currentProduct.views}`;
+   }
+   
+   // Function to display product details and increment views
+   async function displayProductDetails() {
+      const productid = getProductIdFromUrl();
+      const productDetailsContainer = document.getElementById('product-details');
+   
+      if (productid) {
+         const product = await fetchProductDetails(productid);
+   
+         if (product) {
+            // Insert the product details into the HTML
+            document.title = `${product.name}`;
+            productDetailsContainer.innerHTML = `
+               <div class="product-card">
+                  <img src="${product.thumbnailUrl}" alt="${product.name}">
+                  <div class="product-info">
+                      <h1>${product.name}</h1>
+                      <p>Category: ${product.categoryId}</p>
+                      <p>${product.message}</p>
+                      <p class="price">Price: &#8377;${product.price}/-</p>
+                      <p id="viewCount">Views: 0</p> <!-- View count element -->
+                      <input type="number" name="qty" class="qty" min="1" max="99" value="1">
+                      <button class="btn">Add to Cart</button>
+                  </div>
+               </div>
+            `;
+            // Increment views after loading product details
+            incrementProductViews(product.id);
+         } else {
+            productDetailsContainer.innerHTML = '<p>Product not found.</p>';
+            document.title = `Invalid product`;
+         }
+      } else {
+         productDetailsContainer.innerHTML = '<p>Invalid product ID.</p>';
+         document.title = `Invalid product`;
+      }
+   }
+   
+   // Call the function to display product details and increment views
+   displayProductDetails();
+   </script>
+   
+
+</body>
+</html>

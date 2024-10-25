@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>home</title>
+
+   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <link rel="stylesheet" href="css/style.css">
+
+  
+   <script>
+      
+      function targetPageParams(){
+         
+      let pdpVisitCount = localStorage.getItem('PDPVisitorCount') || 0;
+         var params = data
+         console.log(params)
+         return {
+            "page": "home",
+            "title": "Home Page",
+            "description": "Welcome to our home page",
+            "profile.pageVisitcount": 0,
+            "profile.topProductIds": [],// Placeholder for top product IDs
+         };
+      }
+
+
+   </script>
+
+
+   <script src="at.js"></script>
+  
+
+</head>
+<body>
+   
+<header class="header">
+   <section class="flex">
+      <a href="home.html" class="logo">Nomad Pharma</a>
+      <nav class="navbar">
+         <a href="home.html">home</a>
+         <a href="about.html">about</a>
+         <a href="products.html">products</a>
+         <a href="orders.html">orders</a>
+         <a href="contact.html">contact</a>
+      </nav>
+      <div class="icons">
+         <a href="products.html"><i class="fas fa-search"></i></a>
+         <a href="cart.html"><i class="fas fa-shopping-cart"></i><span id="cart-count">(0)</span></a>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="menu-btn" class="fas fa-bars"></div>
+      </div>
+      <div class="profile">
+         <div class="flex">
+            <a href="register.html" class="btn">Signup</a>
+            <a href="login.html" class="delete-btn">login</a>
+         </div>
+      </div>
+   </section>
+</header>
+
+<section class="category">
+   <div class="box-container">
+      <a href="category.html" class="box">
+         <img src="images/wired-outline-497-truck-delivery.gif" alt="">
+         <h3>fastest delivery</h3>
+      </a>
+      <a href="category.html" class="box">
+         <img src="images/wired-outline-146-basket-trolley-shopping-card.gif" alt="">
+         <h3>order online</h3>
+      </a>
+      <a href="category.html" class="box">
+         <img src="images/wired-outline-298-coins.gif" alt="">
+         <h3>Cash On Delivery</h3>
+      </a>
+   </div>
+</section>
+
+<section class="products">
+   <h1 class="title">latest Medicine</h1>
+   <div class="box-container">
+   </div>
+   <div class="more-btn">
+      <a href="products.html" class="btn">view all</a>
+   </div>
+</section>
+
+<section class="category">
+   <h1 class="title">Laboratory Tests</h1>
+   <div class="box-container">
+      <a href="#" class="box">
+         <img src="images/blood.png" alt="">
+         <h3>Blood Test</h3>
+      </a>
+      <a href="#" class="box">
+         <img src="images/thyrod.png" alt="">
+         <h3>Thyroid Test</h3>
+      </a>
+      <a href="#" class="box">
+         <img src="images/std.png" alt="">
+         <h3>STD test</h3>
+      </a>
+   </div>
+</section>
+
+<footer class="footer">
+   <h1 class="title">Connect Us</h1>
+   <section class="box-container">
+      <div class="box">
+         <img src="images/wired-outline-177-envelope-mail-send.gif" alt="">
+         <h3>our email</h3>
+         <a href="mailto:harshanaladala777@gmail.com">nomad777@gmail.com</a>
+         <a href="mailto:aharshanaladala777@gmail.com">nomad777@gmail.com</a>
+      </div>
+      <div class="box">
+         <img src="images/wired-outline-45-clock-time.gif" alt="">
+         <h3>opening hours</h3>
+         <p>09:00am to 09:00pm </p>
+      </div>
+      <div class="box">
+         <img src="images/wired-outline-18-location-pin.gif" alt="">
+         <h3>our address</h3>
+         <a href="https://www.google.com/maps">Hyderabad, telangana - 500018</a>
+      </div>
+      <div class="box">
+         <img src="images/Wc8C.gif" alt="">
+         <h3>our number</h3>
+         <a href="tel:8885566863">+91-9999999999</a>
+         <a href="tel:8885566863">+91-8888888888</a>
+      </div>
+   </section>
+   <div class="credit">&copy; copyright @ 2023 by <span>SRI Pharmacy</span> | all rights reserved!</div>
+</footer>
+
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script src="js/script.js"></script>
+
+<script>
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartCountElement = document.getElementById('cart-count');
+
+    let totalItems = 0;
+    cart.forEach(item => {
+        totalItems += item.quantity;
+    });
+
+    cartCountElement.innerText = `(${totalItems})`;
+}
+
+// Call this function on page load to ensure cart count is updated
+updateCartCount();
+</script>
+
+</body>
+</html>
