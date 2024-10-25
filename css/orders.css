@@ -1,0 +1,113 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 5px 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+img {
+    max-width: 100px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Header */
+
+
+
+.header .navbar {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.header .navbar a {
+    color: white;
+    margin: 0 10px;
+}
+
+.header .icons {
+    float: right;
+}
+
+.header .icons i {
+    font-size: 18px;
+    margin-right: 20px;
+    color: white;
+}
+
+/* Heading */
+.heading {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.heading h3 {
+    margin: 0;
+}
+
+/* Orders Section */
+.orders-section {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.order-banner {
+    background-color: white;
+    border: 1px solid #ddd;
+    margin: 15px;
+    padding: 20px;
+    width: 70%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.order-banner h2 {
+    font-size: 20px;
+    color: #333;
+}
+
+.order-banner p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.order-banner ul {
+    margin: 10px 0;
+    padding: 0;
+}
+
+.order-banner ul li {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.order-banner strong {
+    font-size: 18px;
+    color: #007bff;
+}
+

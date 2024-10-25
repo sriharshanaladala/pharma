@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+}
+
+.product-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background: #e9ecef; /* Light background for contrast */
+    padding: 20px;
+}
+
+.product-card {
+    display: flex;
+    width: 100%; /* Full width of the viewport */
+    max-width: 1200px; /* Maximum width of the product card */
+    margin: auto; /* Centering */
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    width: 50%; /* 50% width for the image */
+    height: auto; /* Auto height to maintain aspect ratio */
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.product-info {
+    padding: 20px; /* Padding for the text area */
+    flex: 1; /* Take up the remaining space */
+}
+
+.product-card h1 {
+    font-size: 36px; /* Large font size for the product name */
+    margin: 10px 0;
+    color: #333; /* Dark color for visibility */
+}
+
+.product-card p {
+    font-size: 20px; /* Larger font size for description */
+    color: #666; /* Softer color for description */
+}
+
+.price {
+    font-size: 24px; /* Font size for the price */
+    color: #007bff; /* Highlighted color for price */
+    margin: 20px 0;
+}
+
+.qty {
+    width: 60px;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+.btn {
+    background: #28a745; /* Button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Font size for button */
+}
+
+.btn:hover {
+    background: #218838; /* Darker button on hover */
+}
+
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+    .product-card {
+        flex-direction: column; /* Stack vertically on small screens */
+    }
+
+    .product-card img {
+        width: 100%; /* Full width for the image on small screens */
+        border-radius: 8px; /* Ensure corners are rounded */
+    }
+    
+    .product-card h1 {
+        font-size: 28px; /* Smaller font size on small screens */
+    }
+
+    .product-card p {
+        font-size: 18px; /* Smaller description on small screens */
+    }
+
+    .price {
+        font-size: 20px; /* Smaller price on small screens */
+    }
+}
