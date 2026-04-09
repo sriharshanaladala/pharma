@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>login</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/profile-login.css">
+   <script>
+window.dataLayer = window.dataLayer || [];
+</script>
+   <script>
+   var digitalData = {
+     page: {
+       pageInfo: {
+         Brand:"Nomad Pharma",
+         pageName: "Nomad Pharma | Login",
+         pageType: "login",
+         siteSection: "consumer",
+         subSection: "auth",
+         language: "en",
+         country: "US",
+         templateName: "loginpage"
+       }
+     },
+
+     user: {
+       profile: {
+         loginStatus: "anonymous",
+         userType: "consumer",
+         hcpSpecialty: ""
+       }
+     },
+
+     product: {
+       productInfo: {
+         productName: "",
+         productId: "",
+         indication: ""
+       }
+     },
+
+     consent: {
+       analytics: true,
+       marketing: false,
+       personalization: true
+     }
+   };
+   </script>
+   <script src="js/digital-data-helper.js"></script>
+   <script src="js/utility-functions.js"></script>
+   <script src="at.js"></script>
+   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T36CGWR4');</script>
+<script>window.dataLayer = window.dataLayer || [];
+
+dataLayer.push({
+  event: "pageLoaded",
+  digitalData: window.digitalData
+});
+</script>
+</head>
+<body>
+   <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T36CGWR4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header class="header">
+
+   <section class="flex">
+
+      <a href="home.html" class="logo">Nomad Pharma</a>
+
+      <nav class="navbar">
+         <a href="home.html">home</a>
+         <a href="about.html">about</a>
+         <a href="products.html">products</a>
+         <a href="orders.html">orders</a>
+         <a href="contact.html">contact</a>
+      </nav>
+
+      <div class="icons">
+         <a href="search.html"><i class="fas fa-search"></i></a>
+         <a href="cart.html"><i class="fas fa-shopping-cart"></i><span id="cart-count">(0)</span></a> <!-- Cart count element -->
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="menu-btn" class="fas fa-bars"></div>
+      </div>
+
+      <div class="profile">
+         <div class="flex">
+            <a href="register.html" class="btn">Signup</a>
+            <a href="login.html" class="delete-btn">login</a>
+         </div>
+      </div>
+
+   </section>
+
+</header>
+
+<section class="form-container">
+
+   <form id="loginForm" action="" method="post">
+      <h3>login now</h3>
+      <input type="email" required maxlength="50" name="email" placeholder="enter your email" class="box" id="loginEmail">
+      <input type="password" required maxlength="20" name="pass" placeholder="enter your password" class="box" id="loginPassword">
+      <input type="submit" value="login now" class="btn" name="submit" id="loginBtn">
+      <p>don't have an account? <a href="register.html">register now</a></p>
+   </form>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="footer">
+   <h1 class="title">Connect Us</h1>
+
+   <section class="box-container">
+
+      <div class="box">
+         <img src="images/email-icon.png" alt="">
+         <h3>our email</h3>
+         <a href="mailto:ianisul768@gmail.com">anisul768@gmail.com</a>
+         <a href="mailto:aanisul768@gmail.com">anisul768@gmail.com</a>
+      </div>
+
+      <div class="box">
+         <img src="images/clock-icon.png" alt="">
+         <h3>opening hours</h3>
+         <p>09:00am to 09:00pm </p>
+      </div>
+
+      <div class="box">
+         <img src="images/map-icon.png" alt="">
+         <h3>our address</h3>
+         <a href="https://www.google.com/maps">Goalpara, assam - 783125</a>
+      </div>
+
+      <div class="box">
+         <img src="images/phone-icon.png" alt="">
+         <h3>our number</h3>
+         <a href="tel:916002813464">+91-6002813464</a>
+         <a href="tel:916002813464">+91-6002813464</a>
+      </div>
+
+   </section>
+
+   <div class="credit">&copy; copyright @ 2026 by <span>Nomad Pharma</span> | all rights reserved!</div>
+
+</footer>
+
+<div class="loader">
+   <img src="images/6Gl.gif" alt="">
+</div>
+
+<script>
+// Login Form Validation and Handling
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+   e.preventDefault();
+
+   // Get form values
+   const email = document.getElementById('loginEmail').value.trim();
+   const password = document.getElementById('loginPassword').value;
+
+   // Validate inputs
+   if (!email || !password) {
+      showMessage('Please enter email and password', 'warning');
+      return;
+   }
+
+   // Validate email format
+   if (!validateEmail(email)) {
+      showMessage('Please enter a valid email address', 'error');
+      document.getElementById('loginEmail').focus();
+      return;
+   }
+
+   // Disable submit button
+   const submitBtn = document.getElementById('loginBtn');
+   submitBtn.disabled = true;
+   submitBtn.value = 'logging in...';
+
+   try {
+      // Verify user credentials
+      const result = await verifyUserLogin(email, password);
+
+      if (result.success) {
+         // Store user data for header display (both localStorage and sessionStorage)
+         const userData = {
+            email: email,
+            name: result.userName,
+            loginTime: new Date().toISOString()
+         };
+         localStorage.setItem('loggedInUser', JSON.stringify(userData));
+         sessionStorage.setItem('loggedInUser', JSON.stringify(userData)); // Also store in sessionStorage
+
+         // Mirror current user record for fallback and cross-script compatibility
+         localStorage.setItem('currentUser', JSON.stringify({
+            id: result.userId,
+            name: result.userName,
+            email: email
+         }));
+         sessionStorage.setItem('currentUser', JSON.stringify({
+            id: result.userId,
+            name: result.userName,
+            email: email
+         }));
+
+         // Store submission data for thanks page
+         storeFormSubmission('login', {
+            email: email,
+            userName: result.userName
+         });
+
+         // Update header profile after login (if script is loaded)
+         if (typeof updateUserStatus === 'function') {
+            updateUserStatus();
+            const profile = document.querySelector('.header .flex .profile');
+            if (profile) profile.classList.add('active');
+         }
+
+         showMessage('Login successful! Redirecting...', 'success');
+
+         setTimeout(() => {
+            window.location.href = 'home.html';
+         }, 1500);
+      } else {
+         showMessage(result.error, 'error');
+         document.getElementById('loginPassword').value = '';
+         submitBtn.disabled = false;
+         submitBtn.value = 'login now';
+         document.getElementById('loginPassword').focus();
+      }
+   } catch (error) {
+      console.error('Login error:', error);
+      showMessage('An error occurred during login', 'error');
+      submitBtn.disabled = false;
+      submitBtn.value = 'login now';
+   }
+});
+
+// Cart count on page load
+function updateCartCount() {
+   const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+   document.getElementById('cart-count').textContent = `(${cart.length})`;
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
+
+<script src="js/profile-manager.js"></script>
+</xai:function_call />
+
+<xai:function_call name="edit_file">
+<parameter name="path">c:/xampp/htdocs/nomadpharma/register.html
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Tracking Example</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    
+    .form-section, .dashboard-section {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+    
+    .subtitle {
+      color: #666;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    label {
+      color: #333;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    input, textarea, select {
+      padding: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 5px;
+      font-size: 14px;
+      font-family: inherit;
+      transition: border-color 0.3s;
+    }
+    
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    input:invalid {
+      border-color: #ff6b6b;
+    }
+    
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    
+    button {
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    /* Dashboard */
+    .dashboard-section h2 {
+      color: #333;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+    
+    .panel {
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .panel-title {
+      font-weight: 600;
+      color: #667eea;
+      margin-bottom: 8px;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+    
+    .panel-content {
+      font-size: 12px;
+      color: #555;
+      white-space: pre-wrap;
+      word-break: break-all;
+      font-family: monospace;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+    
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .button-group button {
+      padding: 8px 12px;
+      font-size: 12px;
+      background: #667eea;
+    }
+    
+    .status-indicator {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4caf50;
+      margin-right: 5px;
+    }
+    
+    .status {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      color: #333;
+      margin: 10px 0;
+    }
+    
+    .event-list {
+      list-style: none;
+      font-size: 12px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    
+    .event-list li {
+      padding: 5px;
+      border-bottom: 1px solid #e0e0e0;
+      color: #555;
+    }
+    
+    .event-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .event-badge {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 10px;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- FORM SECTION -->
+    <div class="form-section">
+      <h1>Symptoms Enquiry</h1>
+      <p class="subtitle">Fill out this form to report your symptoms</p>
+      
+      <form id="symptoms-enquiry-form">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input 
+            type="text" 
+            id="firstName" 
+            name="firstName" 
+            required 
+            placeholder="Enter your first name"
+          />
+        </div>
+        
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input 
+            type="text" 
+            id="lastName" 
+            name="lastName" 
+            required 
+            placeholder="Enter your last name"
+          />
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            required 
+            placeholder="your.email@example.com"
+          />
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input 
+            type="tel" 
+            id="phone" 
+            name="phone" 
+            placeholder="+1 (555) 000-0000"
+          />
+        </div>
+        
+        <div class="form-group">
+          <label for="symptoms">Describe Your Symptoms</label>
+          <textarea 
+            id="symptoms" 
+            name="symptoms" 
+            required 
+            placeholder="Please describe your symptoms in detail..."
+          ></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="duration">How long have you had these symptoms?</label>
+          <select id="duration" name="duration" required>
+            <option value="">-- Select duration --</option>
+            <option value="less-than-1-week">Less than 1 week</option>
+            <option value="1-2-weeks">1 to 2 weeks</option>
+            <option value="2-4-weeks">2 to 4 weeks</option>
+            <option value="1-3-months">1 to 3 months</option>
+            <option value="more-than-3-months">More than 3 months</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="severity">Severity</label>
+          <select id="severity" name="severity" required>
+            <option value="">-- Select severity --</option>
+            <option value="mild">Mild</option>
+            <option value="moderate">Moderate</option>
+            <option value="severe">Severe</option>
+          </select>
+        </div>
+        
+        <button type="submit">Submit Enquiry</button>
+      </form>
+    </div>
+    
+    <!-- DASHBOARD SECTION -->
+    <div class="dashboard-section">
+      <h2>📊 Tracking Dashboard</h2>
+      
+      <div class="status">
+        <span class="status-indicator"></span>
+        Tracking Active
+      </div>
+      
+      <!-- Form Context Panel -->
+      <div class="panel">
+        <div class="panel-title">📋 Form Context</div>
+        <div class="panel-content" id="formContextPanel">
+          Waiting for form interaction...
+        </div>
+      </div>
+      
+      <!-- DataLayer Events Panel -->
+      <div class="panel">
+        <div class="panel-title">📤 Recent DataLayer Events</div>
+        <ul class="event-list" id="eventList"></ul>
+      </div>
+      
+      <!-- Statistics Panel -->
+      <div class="panel">
+        <div class="panel-title">📈 Statistics</div>
+        <div class="panel-content">
+          <div>Total Events: <strong id="totalEvents">0</strong></div>
+          <div>Valid Fields: <strong id="filledFields">0</strong> / <strong id="totalFields">0</strong></div>
+          <div>Errors: <strong id="errorCount">0</strong></div>
+        </div>
+      </div>
+      
+      <!-- Debug Buttons -->
+      <div class="button-group">
+        <button onclick="window.showFormContext(); alert('Check console');">Show Form Context</button>
+        <button onclick="window.showDataLayer(); alert('Check console');">Show DataLayer</button>
+        <button onclick="window.showTrackingSummary(); alert('Check console');">Show Summary</button>
+        <button onclick="window.clearDataLayer(); updateDashboard(); alert('DataLayer cleared');">Clear Events</button>
+        <button onclick="window.resetFormContext(); updateDashboard(); alert('All tracking reset');">Reset All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load the form tracking script FIRST -->
+  <script src="js/digital-data-helper.js"></script>
+
+  <script>
+    /**
+     * Dashboard Update Function
+     * Real-time display of form tracking data
+     */
+    function updateDashboard() {
+      // Update Form Context
+      const context = window.formContext;
+      const contextDisplay = `
+Form: ${context.form.formName || 'Not started'}
+Step: ${context.form.step} (${context.form.stepName})
+Field: ${context.interaction.fieldName || 'None'}
+Value: ${context.interaction.fieldValue || 'N/A'}
+Type: ${context.interaction.interactionType || 'N/A'}
+      `.trim();
+      
+      document.getElementById('formContextPanel').textContent = contextDisplay;
+      
+      // Update Event List
+      const dataLayer = window.getDataLayer();
+      const eventList = document.getElementById('eventList');
+      const recentEvents = dataLayer.slice(-5).reverse();
+      
+      eventList.innerHTML = recentEvents.map(event => `
+        <li>
+          <span class="event-badge">${event.event}</span>
+          ${event.formContext?.interaction?.fieldName ? `on ${event.formContext.interaction.fieldName}` : 'timing'}
+        </li>
+      `).join('');
+      
+      // Update Statistics
+      document.getElementById('totalEvents').textContent = dataLayer.length;
+      document.getElementById('filledFields').textContent = context.fields.filledFields;
+      document.getElementById('totalFields').textContent = context.fields.totalFields;
+      const errors = dataLayer.filter(e => e.event === 'formError').length;
+      document.getElementById('errorCount').textContent = errors;
+    }
+    
+    // Update dashboard every 500ms
+    setInterval(updateDashboard, 500);
+    
+    // Initial update
+    setTimeout(updateDashboard, 1000);
+    
+    // Log to console when form is submitted
+    document.getElementById('symptoms-enquiry-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      console.group('✅ FORM SUBMITTED');
+      console.log('FormContext:', window.formContext);
+      console.log('All DataLayer Events:', window.getDataLayer());
+      console.table(window.getDataLayer());
+      console.groupEnd();
+      
+      alert('✅ Form submitted! Check console for tracking data.\n\nForm Context and DataLayer events are ready.');
+    });
+  </script>
+</body>
+</html>

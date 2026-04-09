@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Thank You - Nomad Pharma</title>
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <link rel="stylesheet" href="css/thanks.css">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/profile-login.css">
+
+   <script>
+   var digitalData = {
+     page: {
+       pageInfo: {
+         Brand: "Nomad Pharma",
+         pageName: "Nomad Pharma | Thank You",
+         pageType: "success",
+         siteSection: "consumer",
+         subSection: "confirmation",
+         language: "en",
+         country: "US",
+         templateName: "thankyoupage"
+       }
+     },
+
+     user: {
+       profile: {
+         loginStatus: "anonymous",
+         userType: "consumer",
+         hcpSpecialty: ""
+       }
+     },
+
+     consent: {
+       analytics: true,
+       marketing: false,
+       personalization: true
+     }
+   };
+   </script>
+   <script src="js/digital-data-helper.js"></script>
+   <script src="at.js"></script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','digitalData','GTM-T36CGWR4');</script>
+<script>window.dataLayer = window.dataLayer || [];
+
+dataLayer.push({
+  event: "pageLoaded",
+  digitalData: window.digitalData
+});
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T36CGWR4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header class="header">
+   <section class="flex">
+      <a href="home.html" class="logo">Nomad Pharma</a>
+      <nav class="navbar">
+         <a href="home.html">Home</a>
+         <a href="about.html">About</a>
+         <a href="products.html">Products</a>
+         <a href="orders.html">Orders</a>
+         <a href="contact.html">Contact</a>
+      </nav>
+      <div class="icons">
+         <a href="search.html"><i class="fas fa-search"></i></a>
+         <a href="cart.html"><i class="fas fa-shopping-cart"></i><span id="cart-count">(0)</span></a>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="menu-btn" class="fas fa-bars"></div>
+      </div>
+      <div class="profile">
+         <div class="flex">
+            <a href="register.html" class="btn">Signup</a>
+            <a href="login.html" class="delete-btn">Login</a>
+         </div>
+      </div>
+   </section>
+</header>
+
+<div class="heading">
+   <h3>Confirmation</h3>
+</div>
+
+<!-- Thank You Section -->
+<section class="thank-you-container">
+   <div class="thank-you-content">
+      <div class="success-icon">
+         <i class="fas fa-check-circle"></i>
+      </div>
+
+      <h1>Thank You!</h1>
+      <p class="message">Your request has been received successfully.</p>
+
+      <!-- Submission Details -->
+      <div class="submission-details">
+         <div class="detail-box" id="submission-info">
+            <div class="detail-item">
+               <span class="label">Submission Type:</span>
+               <span class="value" id="submission-type">-</span>
+            </div>
+            <div class="detail-item">
+               <span class="label">Date & Time:</span>
+               <span class="value" id="submission-date">-</span>
+            </div>
+            <div class="detail-item">
+               <span class="label">Reference ID:</span>
+               <span class="value" id="reference-id">-</span>
+            </div>
+            <div class="detail-item">
+               <span class="label">Email:</span>
+               <span class="value" id="submission-email">-</span>
+            </div>
+         </div>
+      </div>
+
+      <!-- Message Based on Type -->
+      <div id="type-specific-message" class="type-message">
+         <!-- Content will be populated by JavaScript -->
+      </div>
+
+      <!-- Order Summary (if applicable) -->
+      <div id="order-summary" class="order-summary" style="display: none;">
+         <h3>Order Summary</h3>
+         <div class="summary-items" id="summary-items"></div>
+         <div class="summary-total">
+            <strong>Total: ₹<span id="order-total">0</span>/-</strong>
+         </div>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="contact-info">
+         <h3>Need Help?</h3>
+         <p>If you have any questions, please contact us:</p>
+         <div class="contact-details">
+            <p><i class="fas fa-envelope"></i> Email: <a href="mailto:nomad777@gmail.com">nomad777@gmail.com</a></p>
+            <p><i class="fas fa-phone"></i> Phone: <a href="tel:+919999999999">+91-9999999999</a></p>
+            <p><i class="fas fa-clock"></i> Hours: 09:00 AM - 09:00 PM</p>
+         </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+         <a href="home.html" class="btn">Back to Home</a>
+         <a href="products.html" class="btn-secondary">Continue Shopping</a>
+         <a href="orders.html" class="btn-secondary" id="view-orders-btn" style="display: none;">View Orders</a>
+      </div>
+   </div>
+</section>
+
+<footer class="footer">
+   <h1 class="title">Connect Us</h1>
+   <section class="box-container">
+      <div class="box">
+         <img src="images/wired-outline-177-envelope-mail-send.gif" alt="">
+         <h3>Our Email</h3>
+         <a href="mailto:nomad777@gmail.com">nomad777@gmail.com</a>
+         <a href="mailto:nomad777@gmail.com">nomad777@gmail.com</a>
+      </div>
+      <div class="box">
+         <img src="images/wired-outline-45-clock-time.gif" alt="">
+         <h3>Opening Hours</h3>
+         <p>09:00am to 09:00pm </p>
+      </div>
+      <div class="box">
+         <img src="images/wired-outline-18-location-pin.gif" alt="">
+         <h3>Our Address</h3>
+         <a href="https://www.google.com/maps">Hyderabad, Telangana - 500018</a>
+      </div>
+      <div class="box">
+         <img src="images/Wc8C.gif" alt="">
+         <h3>Our Number</h3>
+         <a href="tel:+919999999999">+91-9999999999</a>
+         <a href="tel:+918888888888">+91-8888888888</a>
+      </div>
+   </section>
+   <div class="credit">&copy; copyright @ 2026 by <span>Nomad Pharma</span> | all rights reserved!</div>
+</footer>
+
+<script>
+// Load submission data from sessionStorage
+function loadSubmissionData() {
+   const submissionData = JSON.parse(sessionStorage.getItem('submissionData') || '{}');
+   
+   if (!submissionData.type) {
+      // No submission data, show generic thank you
+      showGenericThanks();
+      return;
+   }
+
+   // Display submission details
+   document.getElementById('submission-type').textContent = submissionData.type.charAt(0).toUpperCase() + submissionData.type.slice(1);
+   document.getElementById('submission-date').textContent = new Date(submissionData.timestamp).toLocaleString();
+   document.getElementById('reference-id').textContent = submissionData.referenceId;
+   document.getElementById('submission-email').textContent = submissionData.email || '-';
+
+   // Load cart and update count
+   loadCart();
+
+   // Show type-specific message
+   showTypeSpecificMessage(submissionData);
+
+   // If it's an order, show order summary
+   if (submissionData.type === 'order' && submissionData.items) {
+      showOrderSummary(submissionData.items, submissionData.total);
+      document.getElementById('view-orders-btn').style.display = 'inline-block';
+   }
+
+   // Clear sessionStorage after displaying
+   sessionStorage.removeItem('submissionData');
+}
+
+function showGenericThanks() {
+   document.getElementById('submission-info').style.display = 'none';
+   document.getElementById('type-specific-message').innerHTML = `
+      <div class="generic-message">
+         <p>Thank you for reaching out to Nomad Pharma.</p>
+         <p>We appreciate your interest and will get back to you shortly.</p>
+      </div>
+   `;
+}
+
+function showTypeSpecificMessage(data) {
+   const messageMap = {
+      registration: `
+         <div class="type-specific-content">
+            <h3>Welcome to Nomad Pharma!</h3>
+            <p>Your account has been created successfully. A confirmation email has been sent to <strong>${data.email}</strong>.</p>
+            <p>You can now login to your account and start shopping.</p>
+         </div>
+      `,
+      contact: `
+         <div class="type-specific-content">
+            <h3>Message Received</h3>
+            <p>Thank you for contacting us. Your message has been received and we'll respond within 24 hours.</p>
+            <p>Expected response: <strong>${new Date(Date.now() + 24 * 60 * 60 * 1000).toLocaleDateString()}</strong></p>
+         </div>
+      `,
+      order: `
+         <div class="type-specific-content">
+            <h3>Order Confirmed!</h3>
+            <p>Your order has been placed successfully. You will receive an order confirmation email shortly.</p>
+            <p>Order will be processed within 1-2 business days.</p>
+         </div>
+      `,
+      enquiry: `
+         <div class="type-specific-content">
+            <h3>Enquiry Submitted</h3>
+            <p>Thank you for submitting your health enquiry. Our pharmacy team will review your symptoms and recommend suitable products.</p>
+            <p>Recommendations will be sent to your email: <strong>${data.email}</strong></p>
+         </div>
+      `,
+      appointment: `
+         <div class="type-specific-content">
+            <h3>Appointment Scheduled</h3>
+            <p>Your appointment request has been received. You will receive a confirmation call shortly.</p>
+            <p>Contact: <strong>${data.phone || 'N/A'}</strong></p>
+         </div>
+      `
+   };
+
+   const message = messageMap[data.type] || messageMap.contact;
+   document.getElementById('type-specific-message').innerHTML = message;
+}
+
+function showOrderSummary(items, total) {
+   const summaryContainer = document.getElementById('summary-items');
+   
+   summaryContainer.innerHTML = '';
+   items.forEach((item, index) => {
+      const itemRow = document.createElement('div');
+      itemRow.className = 'summary-row';
+      itemRow.innerHTML = `
+         <span class="item-name">${index + 1}. ${item.name}</span>
+         <span class="item-qty">Qty: ${item.quantity}</span>
+         <span class="item-price">₹${item.price * item.quantity}/-</span>
+      `;
+      summaryContainer.appendChild(itemRow);
+   });
+
+   document.getElementById('order-total').textContent = total;
+   document.getElementById('order-summary').style.display = 'block';
+}
+
+function loadCart() {
+   const cartData = JSON.parse(localStorage.getItem('cart') || '[]');
+   document.getElementById('cart-count').innerText = `(${cartData.length})`;
+}
+
+// Generate a unique reference ID
+function generateReferenceId() {
+   return 'NP-' + Date.now() + '-' + Math.random().toString(36).substring(2, 9).toUpperCase();
+}
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', function() {
+   loadSubmissionData();
+});
+</script>
+<!-- <script src="js/script.js"></script> -->
+<script src="js/profile-manager.js"></script>
+</body>
+</html>

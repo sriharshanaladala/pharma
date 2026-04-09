@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>home</title>
+   <!-- Adobe Target VEC Helper - Must be first script -->
+    <script> window.targetGlobalSettings = {
+    cookieDomain: window.location.hostname }</script>
+   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+   <script>
+   
+   </script>
+   
+<link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/profile-login.css">
+  <script>
+  var visitCount = localStorage.getItem("visitCount") || 0;
+         visitCount+=1;
+  localStorage.setItem("visitCount", visitCount);
+
+</script>
+<script>
+function targetPageParams() {
+   var userType;
+   if (visitCount>1) {
+    userType = "returning";
+  } else {
+   userType = "new";
+  }
+  console.log("User Type:", userType);
+  return {
+    "profile.userType": userType
+  };
+}
+</script>
+<script src="at.js"></script>
+   <!-- <script>
+      let Queryparams=() => {
+         let params = {}
+         let querystring = window.location.search
+         if(querystring){
+            querystring.substring(1).split("&").forEach((e)=>{
+               let item = e.split("=")
+               params[decodeURIComponent(item[0])] = decodeURIComponent(item[1] || "");            
+            })
+         }
+         return params
+      }
+      //sending user data to adobe target as a targetpageparams
+      function targetPageParams() {
+         try {
+            let pdpVisitCount = localStorage.getItem('PDPVisitorCount') || '0';
+            let productViewsData = localStorage.getItem('productViews');
+            let mostviewed = [];
+            
+            // Safe JSON parse
+            if (productViewsData && productViewsData !== 'null' && productViewsData !== 'undefined') {
+               try {
+                  mostviewed = JSON.parse(productViewsData) || [];
+               } catch (e) {
+                  console.warn('Failed to parse productViews:', e);
+                  mostviewed = [];
+               }
+            }
+
+            // Ensure mostviewed is an array
+            if (!Array.isArray(mostviewed)) {
+               mostviewed = [];
+            }
+
+            mostviewed = mostviewed.map(product => ({
+               ...product,
+               views: Number(product.views) || 0
+            })).sort((a, b) => b.views - a.views);
+
+            let topProductIds = mostviewed.slice(0, 4).map(product => product.id).filter(Boolean);
+            
+            return {
+               "page": "home",
+               "title": "Home Page",
+               "description": "Welcome to our home page",
+               "profile.pageVisitcount": String(pdpVisitCount),
+               "profile.top4_viewed_products": topProductIds.length > 0 ? topProductIds.join(",") : "101,102,103,104"
+            };
+         } catch (error) {
+            console.error('Error in targetPageParams:', error);
+            // Return safe defaults
+            return {
+               "page": "home",
+               "title": "Home Page",
+               "description": "Welcome to our home page",
+               "profile.pageVisitcount": "0",
+               "profile.top4_viewed_products": "101,102,103,104"
+            };
+         }
+      }
+   </script> -->
+
+<script>
+window.dataLayer = window.dataLayer || [];
+</script>
+
+      
+<script>
+var digitalData = {
+  page: {
+    pageInfo: {
+      Brand:"Nomad Pharma",
+      pageName: "Nomad Pharma | Home",
+      pageType: "home",               // home | plp | pdp | hcp | form
+      siteSection: "consumer",
+      subSection: "",
+      language: "en",
+      country: "US",
+      templateName: "homepage"
+    }
+  },
+
+  user: {
+    profile: {
+      loginStatus: "anonymous",       // anonymous | logged-in
+      userType: "consumer",           // consumer | hcp
+      hcpSpecialty: ""
+    }
+  },
+
+  product: {
+    productInfo: {
+      productName: "",
+      productId: "",
+      indication: ""
+    }
+  },
+
+  consent: {
+    analytics: true,
+    marketing: false,
+    personalization: true
+  }
+};
+</script>
+<script src="js/digital-data-helper.js"></script>
+
+
+   <!-- <script src="at.js"></script> -->
+   <!-- <script>
+      window.onload = function() {
+         adobe.target.triggerView({
+            'mbox':"target-global-mbox",
+            "view": "home",
+            "params": targetPageParams()
+         });
+         if (window.location.pathname === "/pharma/home") {
+            adobe.target.getOffer({
+               "mbox": "target-global-mbox",
+               "success": function (offer) {
+                  console.log(offer);
+                  console.log(offer.length)
+                  if (offer && offer.length > 0) {
+                     adobe.target.triggerView("homePageOfferView");
+                  }
+               }
+            });
+         }
+      };
+   </script> -->
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T36CGWR4');</script>
+<script>window.dataLayer = window.dataLayer || [];
+
+dataLayer.push({
+  event: "pageLoaded",
+  digitalData: window.digitalData
+});
+</script>
+</head>
+<body>
+   <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T36CGWR4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header class="header">
+   <section class="flex">
+      <a href="home.html" class="logo">NomadPharma</a>
+      <nav class="navbar">
+         <a href="home.html">home</a>
+         <a href="about.html">about</a>
+         <a href="products.html">products</a>
+         <a href="orders.html">orders</a>
+         <a href="contact.html">contact</a>
+      </nav>
+      <div class="icons">
+         <a href="products.html"><i class="fas fa-search"></i></a>
+         <a href="cart.html"><i class="fas fa-shopping-cart"></i><span id="cart-count">(0)</span></a>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="menu-btn" class="fas fa-bars"></div>
+      </div>
+      <div class="profile">
+         <div class="flex">
+            <a href="register.html" class="btn">Signup</a>
+            <a href="login.html" class="delete-btn">login</a>
+         </div>
+      </div>
+   </section>
+</header>
+
+<section class="category">
+   <div class="box-container">
+      <a href="category.html" class="box">
+         <img src="images/wired-outline-497-truck-delivery.gif" alt="">
+         <h3>fastest delivery</h3>
+      </a>
+      <a href="category.html" class="box">
+         <img src="images/wired-outline-146-basket-trolley-shopping-card.gif" alt="">
+         <h3>order online</h3>
+      </a>
+      <a href="category.html" class="box">
+         <img src="images/wired-outline-298-coins.gif" alt="">
+         <h3>Cash On Delivery</h3>
+      </a>
+   </div>
+</section>
+
+<section class="products">
+   <h1 class="title">latest Medicine</h1>
+   <div class="box-container">
+   </div>
+   <div class="more-btn">
+      <a href="products.html" class="btn">view all</a>
+   </div>
+</section>
+
+<section class="category">
+   <h1 class="title">Laboratory Tests</h1>
+   <div class="box-container">
+      <a href="#" class="box">
+         <img src="images/blood.png" alt="">
+         <h3>Blood Test</h3>
+      </a>
+      <a href="#" class="box">
+         <img src="images/thyrod.png" alt="">
+         <h3>Thyroid Test</h3>
+      </a>
+      <a href="#" class="box">
+         <img src="images/std.png" alt="">
+         <h3>STD test</h3>
+      </a>
+   </div>
+</section>
+
+<footer class="footer">
+   <h1 class="title">Connect Us</h1>
+   <section class="box-container">
+      <div class="box">
+         <img src="images/wired-outline-177-envelope-mail-send.gif" alt="">
+         <h3>our email</h3>
+         <a href="mailto:harshanaladala777@gmail.com">nomad777@gmail.com</a>
+         <a href="mailto:aharshanaladala777@gmail.com">nomad777@gmail.com</a>
+      </div>
+      <div class="box">
+         <img src="images/wired-outline-45-clock-time.gif" alt="">
+         <h3>opening hours</h3>
+         <p>09:00am to 09:00pm </p>
+      </div>
+      <div class="box">
+         <img src="images/wired-outline-18-location-pin.gif" alt="">
+         <h3>our address</h3>
+         <a href="https://www.google.com/maps">Hyderabad, telangana - 500018</a>
+      </div>
+      <div class="box">
+         <img src="images/Wc8C.gif" alt="">
+         <h3>our number</h3>
+         <a href="tel:8885566863">+91-9999999999</a>
+         <a href="tel:8885566863">+91-8888888888</a>
+      </div>
+   </section>
+   <div class="credit">&copy; copyright @ 2026 by <span>Nomad Pharma</span> | all rights reserved!</div>
+</footer>
+
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+<script>
+function updateCartCount() {
+    const CART_KEY = 'cart';
+    const cartCountElement = document.getElementById('cart-count');
+    
+    try {
+        const cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+        const cartCount = cart.length;
+        cartCountElement.innerText = `(${cartCount})`;
+    } catch (error) {
+        console.error('Error parsing cart data:', error);
+        cartCountElement.innerText = '(0)'; // Fallback in case of error
+    }
+}
+
+// Call this function on page load to ensure cart count is updated
+updateCartCount();
+</script>
+<script src="js/profile-manager.js"></script>
+ 
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Products</title>
+
+   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/profile-login.css">
+   
+   <script>
+window.dataLayer = window.dataLayer || [];
+</script>
+
+
+   <script>
+   var digitalData = {
+     page: {
+       pageInfo: {
+         Brand:"Nomad Pharma",
+         pageName: "Nomad Pharma | Products",
+         pageType: "plp",
+         siteSection: "consumer",
+         subSection: "products",
+         language: "en",
+         country: "US",
+         templateName: "productlistpage"
+       }
+     },
+
+     user: {
+       profile: {
+         loginStatus: "anonymous",
+         userType: "consumer",
+         hcpSpecialty: ""
+       }
+     },
+
+     product: {
+       productInfo: {
+         productName: "",
+         productId: "",
+         indication: ""
+       }
+     },
+
+     consent: {
+       analytics: true,
+       marketing: false,
+       personalization: true
+     }
+   };
+   </script>
+   <script src="js/digital-data-helper.js"></script>
+
+   <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.location.pathname.indexOf("/products") > -1) {
+            let count = parseInt(localStorage.getItem('PDPVisitorCount')) || 0;
+            count += 1;
+            localStorage.setItem('PDPVisitorCount', count);
+            console.log("Current PDPVisitorCount:", count-1);
+        }
+  
+    });
+//     function targetPageParams() {
+//         try {
+//             // Retrieve the count from local storage
+//             let pdpVisitCount = localStorage.getItem('PDPVisitorCount') || '0';
+
+//             return {
+//                 "page": "products",
+//                 "PDPVisitorCount": String(pdpVisitCount)
+//             };
+//         } catch (error) {
+//             console.error('Error in targetPageParams:', error);
+//             return {
+//                 "page": "products",
+//                 "PDPVisitorCount": "0"
+//             };
+//         }
+//     }
+//     if (window.location.pathname.startsWith("/pharma/products")) {
+//     adobe.target.trackEvent({
+//         "mbox": "target-global-mbox",
+//         "params": {
+//             "page": "products",
+//             "entity.eventType": "view"
+//         }
+//     });
+// }
+
+
+</script>  
+
+   <script src="at.js"></script>
+   <!-- <script src="https://assets.adobedtm.com/c659134f73d8/262a19a5aff3/launch-aaa2de533b96-development.min.js" async></script> -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T36CGWR4');</script>
+    
+   <script>window.dataLayer = window.dataLayer || [];
+
+dataLayer.push({
+  event: "pageLoaded",
+  digitalData: window.digitalData
+});
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T36CGWR4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header class="header">
+   <section class="flex">
+      <a href="home.html" class="logo">Nomad Pharma</a>
+      <nav class="navbar">
+         <a href="home.html">Home</a>
+         <a href="about.html">About</a>
+         <a href="products.html">Products</a>
+         <a href="orders.html">Orders</a>
+         <a href="contact.html">Contact</a>
+      </nav>
+      <div class="icons">
+         <a href="search.html"><i class="fas fa-search"></i></a>
+         <a href="cart.html"><i class="fas fa-shopping-cart"></i><span id="cart-count">(0)</span></a>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="menu-btn" class="fas fa-bars"></div>
+      </div>
+      <div class="profile">
+         <div class="flex">
+            <a href="register.html" class="btn">Signup</a>
+            <a href="login.html" class="delete-btn">Login</a>
+         </div>
+      </div>
+   </section>
+</header>
+
+<div class="heading">
+   <h3>Our Products</h3>
+</div>
+
+<!-- Search Bar -->
+<section class="search-bar">
+   <input type="text" id="search-input" placeholder="Search for products..." oninput="filterProducts()">
+</section>
+
+<!-- Health Conditions Enquiry Form -->
+<section class="health-conditions-enquiry">
+   <h2>Find the Right Medicine for Your Symptoms</h2>
+   <form id="symptoms-enquiry-form" class="symptoms-form">
+      <p>Tell us about your symptoms and we'll help you find suitable products</p>
+      <div class="form-group">
+         <label for="symptoms">What symptoms are you experiencing?</label>
+         <div class="checkbox-group">
+            <label><input type="checkbox" name="symptoms" value="headache"> Headache</label>
+            <label><input type="checkbox" name="symptoms" value="fever"> Fever</label>
+            <label><input type="checkbox" name="symptoms" value="cough"> Cough</label>
+            <label><input type="checkbox" name="symptoms" value="cold"> Cold/Congestion</label>
+            <label><input type="checkbox" name="symptoms" value="body-ache"> Body Ache</label>
+            <label><input type="checkbox" name="symptoms" value="indigestion"> Indigestion</label>
+            <label><input type="checkbox" name="symptoms" value="allergies"> Allergies</label>
+            <label><input type="checkbox" name="symptoms" value="skin-issues"> Skin Issues</label>
+         </div>
+      </div>
+      <div class="form-group">
+         <label for="allergies">Any Known Allergies/Medications:</label>
+         <textarea name="allergies" id="allergies" placeholder="List any medicines or allergies" maxlength="200" class="box" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+         <input type="email" name="email" required placeholder="Your Email" maxlength="50" class="box">
+         <button type="submit" class="btn">Get Recommendations</button>
+      </div>
+   </form>
+</section>
+
+<section class="products">
+   <h1 class="title">Our Medicare</h1>
+   <div class="box-container" id="product-list"></div>
+</section>
+
+<footer class="footer">
+   <h1 class="title">Connect Us</h1>
+   <section class="box-container">
+      <div class="box">
+         <img src="images/wired-outline-177-envelope-mail-send.gif" alt="">
+         <h3>Our Email</h3>
+         <a href="mailto:harshanaladala777@gmail.com">nomad777@gmail.com</a>
+         <a href="mailto:aharshanaladala777@gmail.com">nomad777@gmail.com</a>
+      </div>
+      <div class="box">
+         <img src="images/wired-outline-45-clock-time.gif" alt="">
+         <h3>Opening Hours</h3>
+         <p>09:00am to 09:00pm </p>
+      </div>
+      <div class="box">
+         <img src="images/wired-outline-18-location-pin.gif" alt="">
+         <h3>Our Address</h3>
+         <a href="https://www.google.com/maps">Hyderabad, Telangana - 500018</a>
+      </div>
+      <div class="box">
+         <img src="images/Wc8C.gif" alt="">
+         <h3>Our Number</h3>
+         <a href="tel:8885566863">+91-9999999999</a>
+         <a href="tel:8885566863">+91-8888888888</a>
+      </div>
+   </section>
+   <div class="credit">&copy; copyright @ 2026 by <span>Nomad Pharma</span> | all rights reserved!</div>
+</footer>
+
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+<script>
+  let allProducts = [];
+  let cart = [];
+
+  // Function to load cart from local storage
+  function loadCart() {
+      const storedCart = localStorage.getItem('cart');
+      if (storedCart) {
+         cart = JSON.parse(storedCart);
+      }
+      document.getElementById('cart-count').innerText = `(${cart.length})`;
+   }
+
+   // Function to fetch and display products
+   async function displayProducts() {
+      const productList = document.getElementById("product-list");
+      try {
+         const response = await fetch('med_products.json');
+         allProducts = await response.json();
+         localStorage.setItem("products",JSON.stringify(allProducts))
+         allProducts.forEach(product => {
+            
+            console.log(product)
+            addProductCard(product);
+         });
+      } catch (error) {
+         console.error('Error fetching products:', error);
+      }
+   }
+
+   // Function to add a product card to the product list
+   function addProductCard(product) {
+      console.log(product.name)
+      const productList = document.getElementById("product-list");
+      const productCard = document.createElement("div");
+      productCard.className = "box";
+      productCard.innerHTML = `
+         <a href="product.html?id=${product.id}" class="fas fa-eye"></a>
+         <button class="fas fa-shopping-cart" type="button" onclick="addToCart('${product.name}', '${product.thumbnailUrl}', ${product.price})"></button>
+         <img src="${product.thumbnailUrl}" alt="${product.name}">
+         <div class="product-info">
+            <h3 class="product-name">${product.name}</h3>
+            <p class="product-category">${product.categoryId}</p>
+            <p class="product-description">${product.message}</p>
+            <div class="product-price">
+               <span>&#8377;</span>${product.price}<span>/-</span>
+            </div>
+            <div class="flex">
+               <input type="number" name="qty" class="qty_${(product.name).replaceAll(/\s/g,'')}" min="1" max="99" value="1" onkeypress="if(this.value.length == 2) return false;">
+            </div>
+         </div>
+      `;
+      productList.appendChild(productCard);
+   }
+
+   // Function to filter products based on search input
+   function filterProducts(){
+      const searchInput = document.getElementById("search-input").value.toLowerCase();
+      const productList = document.getElementById("product-list");
+      productList.innerHTML = "";
+
+      allProducts.forEach(product => {
+         if (product.name.toLowerCase().includes(searchInput)) {
+            addProductCard(product);
+         }
+      });
+   }
+
+   // Function to add a product to the cart
+   function addToCart(name, image, price) {
+      const existingItem = cart.find(item => item.name === name);
+      const qtyClass = `qty_${name.replaceAll(/\s/g,'')}`;
+      const qtyInput = document.getElementsByClassName(qtyClass)[0];
+      const quantity = qtyInput ? parseInt(qtyInput.value) : 1;
+
+      if (existingItem) {
+         existingItem.quantity += quantity;
+      } else {
+         cart.push({ name, image, price, quantity: quantity });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      document.getElementById('cart-count').innerText = `(${cart.length})`;
+      alert(`${name} added to cart!`);
+   }
+
+   // Load cart and products on page load
+   loadCart();
+   displayProducts();
+</script>
+<!-- <script src="js/script.js"></script> -->
+<script src="js/profile-manager.js"></script>
+</body>
+</html>
